@@ -17,7 +17,6 @@ import InteractionPlugin from "@fullcalendar/interaction";
 import ListPlugin from "@fullcalendar/list";
 import resourceTimelineDayPlugin from "@fullcalendar/resource-timeline";
 import { createEventId } from "../event/event-utils";
-import { mapActions } from "vuex";
 export default {
     name: "CalenDar",
     components: {
@@ -48,15 +47,12 @@ export default {
                 eventClick: this.handleEventClick,
                 eventsSet: this.handleEvents,
                 editable: true,
-                droppable: true 
             },
             currentEvents:[]
         }
     },
     methods: {
-        ...mapActions([
-            'updateEvent'
-        ]),
+       
         handleWeekendsToggle() {
              this.calendarPlugins.weekends = !this.calendarPlugins.weekends // update a property
          },
@@ -83,9 +79,7 @@ export default {
         handleEvents(events) {
             this.currentEvents = events
         },
-        onEventDrop({event}){
-            return this.updateEvent(event)
-        }
+        
     }
 }
 </script>
